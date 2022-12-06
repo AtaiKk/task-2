@@ -1,5 +1,9 @@
 public class Main {
     public static void main(String[] args) {
-        Game.startGame();
+        for (int i = 0; i < 4; i++) {
+            Game.startGame();
+
+        }
+        Game.printGame();
     }
 }
