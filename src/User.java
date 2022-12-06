@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class User {
-    public Move getMove(){
+    public static Move getMove(){
         Scanner s = new Scanner(System.in);
         System.out.printf("1 - Камень \n2 - Ножницы \n3 - Бумага\n");
         System.out.print("Выберите чем будете ходить (1, 2 или 3): ");
