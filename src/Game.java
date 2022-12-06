@@ -32,10 +32,10 @@ public class Game {
     }
 
     public static void printGame(){
-        int winRate = userScore / computerScore*100;
+        int winRate = (userScore / computerScore)*100;
         System.out.println("+------------------------------------------------------+");
         System.out.println("| ПОБЕД | ПОРАЖЕНИЙ | НИЧЬИ | ВСЕГО ИГР | ПРОЦЕН ПОБЕД |");
-        System.out.printf("|%-7s|%-11s|%-7s|%-11s|%-14s", userScore, computerScore, draw, numberOfGames, winRate);
+        System.out.printf("|%-7s|%-11s|%-7s|%-11s|%-14s|\n", userScore, computerScore, draw, numberOfGames, winRate);
         System.out.println("+------------------------------------------------------+");
     }
 }
