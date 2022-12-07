@@ -12,23 +12,18 @@ public class Game {
         System.out.println("\nВаш ход  " + userMove + ".");
         System.out.println("Ход компьютера  " + computerMove + ".\n");
 
-
-        int compareMoves = userMove.compareMoves(computerMove);
-        switch (compareMoves) {
-            case 0:
-                System.out.println("Ничья!");
-                draw++;
-                break;
-            case 1:
-                System.out.println(userMove + " beats " + computerMove + ". Вы победили!");
-                userScore++;
-                break;
-            case -1:
-                System.out.println(computerMove + " beats " + userMove + ". Вы проиграли.");
-                computerScore++;
-                break;
+        if((userMove.equals(Move.ROCK) && computerMove.equals(Move.PAPER)) || (userMove.equals(Move.PAPER) && computerMove.equals(Move.SCISSORS)) ||
+                (userMove.equals(Move.SCISSORS) && computerMove.equals(Move.ROCK))){
+            System.out.println("Компьютер победил");
+            computerScore++;
+        }else if((userMove.equals(Move.PAPER) && computerMove.equals(Move.ROCK)) || (userMove.equals(Move.SCISSORS) && computerMove.equals(Move.PAPER)) ||
+                (userMove.equals(Move.ROCK) && computerMove.equals(Move.SCISSORS))){
+            System.out.println("Вы победили");
+            userScore++;
+        }else {
+            draw++;
+            System.out.println("Ничья");
         }
-        numberOfGames++;
     }
 
     public static void printGame(){
