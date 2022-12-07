@@ -1,3 +1,3 @@
 public enum Move {
-    ROCK, PAPER, SCISSORS
+    ROCK, PAPER, SCISSORS, LIZARD, SPOCK
 }

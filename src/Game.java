@@ -14,12 +14,28 @@ public class Game {
         System.out.println("\nВаш ход  " + userMove + ".");
         System.out.println("Ход компьютера  " + computerMove + ".\n");
 
-        if((userMove.equals(Move.ROCK) && computerMove.equals(Move.PAPER)) || (userMove.equals(Move.PAPER) && computerMove.equals(Move.SCISSORS)) ||
-                (userMove.equals(Move.SCISSORS) && computerMove.equals(Move.ROCK))){
+        if((userMove.equals(Move.SPOCK) && computerMove.equals(Move.LIZARD)) ||
+                (userMove.equals(Move.PAPER) && computerMove.equals(Move.LIZARD)) ||
+                (userMove.equals(Move.SCISSORS) && computerMove.equals(Move.SPOCK))||
+                (userMove.equals(Move.ROCK) && computerMove.equals(Move.SPOCK))||
+                (userMove.equals(Move.ROCK) && computerMove.equals(Move.PAPER)) ||
+                (userMove.equals(Move.SPOCK) && computerMove.equals(Move.PAPER)) ||
+                (userMove.equals(Move.PAPER) && computerMove.equals(Move.SCISSORS)) ||
+                (userMove.equals(Move.LIZARD) && computerMove.equals(Move.SCISSORS)) ||
+                (userMove.equals(Move.SCISSORS) && computerMove.equals(Move.ROCK)) ||
+                (userMove.equals(Move.LIZARD) && computerMove.equals(Move.ROCK))){
             System.out.println("Компьютер победил");
             computerScore++;
-        }else if((userMove.equals(Move.PAPER) && computerMove.equals(Move.ROCK)) || (userMove.equals(Move.SCISSORS) && computerMove.equals(Move.PAPER)) ||
-                (userMove.equals(Move.ROCK) && computerMove.equals(Move.SCISSORS))){
+        }else if((userMove.equals(Move.LIZARD) && computerMove.equals(Move.SPOCK)) ||
+                (userMove.equals(Move.LIZARD) && computerMove.equals(Move.PAPER)) ||
+                (userMove.equals(Move.SPOCK) && computerMove.equals(Move.ROCK))||
+                (userMove.equals(Move.SPOCK) && computerMove.equals(Move.SCISSORS))||
+                (userMove.equals(Move.PAPER) && computerMove.equals(Move.ROCK)) ||
+                (userMove.equals(Move.PAPER) && computerMove.equals(Move.SPOCK)) ||
+                (userMove.equals(Move.SCISSORS) && computerMove.equals(Move.PAPER)) ||
+                (userMove.equals(Move.SCISSORS) && computerMove.equals(Move.LIZARD)) ||
+                (userMove.equals(Move.ROCK) && computerMove.equals(Move.SCISSORS)) ||
+                (userMove.equals(Move.ROCK) && computerMove.equals(Move.LIZARD))){
             System.out.println("Вы победили");
             userScore++;
         }else {

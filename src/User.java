@@ -20,6 +20,10 @@ public class User {
                 return Move.SCISSORS;
             case 3:
                 return Move.PAPER;
+            case 4:
+                return Move.LIZARD;
+            case 5:
+                return Move.SPOCK;
             default:
                 System.out.println("Вы ввели не коректные данные, попробуйте ещё раз");
                 return getMove();
