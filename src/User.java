@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class User {
@@ -8,8 +9,7 @@ public class User {
         int chooseMove = 0;
         try {
             chooseMove = s.nextInt();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (InputMismatchException e) {
             System.out.println("Вы ввели не коректные данные, попробуйте ещё раз");
             getMove();
         }
@@ -20,10 +20,6 @@ public class User {
                 return Move.SCISSORS;
             case 3:
                 return Move.PAPER;
-            case 4:
-                return Move.LIZARD;
-            case 5:
-                return Move.SPOCK;
             default:
                 System.out.println("Вы ввели не коректные данные, попробуйте ещё раз");
                 return getMove();
