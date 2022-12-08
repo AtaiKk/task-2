@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Game {
@@ -9,17 +10,17 @@ public class Game {
     static int numberOfGames = 0;
 
     public static void startFirstGame() {
-        Move userMove = User.getMove();
-        Move computerMove = Computer.getMove();
+        MoveForFirstGame userMove = User.getMoveForFirstGame();
+        MoveForFirstGame computerMove = Computer.getMoveForFirstGame();
         System.out.println("\nВаш ход  " + userMove + ".");
         System.out.println("Ход компьютера  " + computerMove + ".\n");
 
-        if ((userMove.equals(Move.ROCK) && computerMove.equals(Move.PAPER)) || (userMove.equals(Move.PAPER) && computerMove.equals(Move.SCISSORS)) ||
-                (userMove.equals(Move.SCISSORS) && computerMove.equals(Move.ROCK))) {
+        if ((userMove.equals(MoveForFirstGame.ROCK) && computerMove.equals(MoveForFirstGame.PAPER)) || (userMove.equals(MoveForFirstGame.PAPER) && computerMove.equals(MoveForFirstGame.SCISSORS)) ||
+                (userMove.equals(MoveForFirstGame.SCISSORS) && computerMove.equals(MoveForFirstGame.ROCK))) {
             System.out.println("Компьютер победил");
             computerScore++;
-        } else if ((userMove.equals(Move.PAPER) && computerMove.equals(Move.ROCK)) || (userMove.equals(Move.SCISSORS) && computerMove.equals(Move.PAPER)) ||
-                (userMove.equals(Move.ROCK) && computerMove.equals(Move.SCISSORS))) {
+        } else if ((userMove.equals(MoveForFirstGame.PAPER) && computerMove.equals(MoveForFirstGame.ROCK)) || (userMove.equals(MoveForFirstGame.SCISSORS) && computerMove.equals(MoveForFirstGame.PAPER)) ||
+                (userMove.equals(MoveForFirstGame.ROCK) && computerMove.equals(MoveForFirstGame.SCISSORS))) {
             System.out.println("Вы победили");
             userScore++;
         } else {
@@ -30,8 +31,8 @@ public class Game {
     }
 
         public static void startSecondGame(){
-        Move userMove = User.getMove();
-        Move computerMove = Computer.getMove();
+        Move userMove = User.getMoveForSecondGame();
+        Move computerMove = Computer.getMoveForSecondGame();
         System.out.println("\nВаш ход  " + userMove + ".");
         System.out.println("Ход компьютера  " + computerMove + ".\n");
 
@@ -117,5 +118,33 @@ public class Game {
         System.out.println("| ПОБЕД | ПОРАЖЕНИЙ | НИЧЬИ | ВСЕГО ИГР | ПРОЦЕН ПОБЕД |");
         System.out.printf("|%-7s|%-11s|%-7s|%-11s|%-14s|\n", userScore, computerScore, draw, numberOfGames, winRate);
         System.out.println("+------------------------------------------------------+");
+    }
+
+    public static void chooseGame(){
+        System.out.println("1 - легкий\n2 - усложненный\n");
+        System.out.print("Выберите режим игры: ");
+        Scanner s = new Scanner(System.in);
+        int answer = 0;
+        try {
+            answer = s.nextInt();
+        }catch (InputMismatchException e){
+            System.out.println("Вы ввели не коректные данные, попробуйте ещё раз");
+            chooseGame();
+        }
+        switch (answer){
+            case 1:
+                startFirstGame();
+                allGameForFirstGame();
+                printGame();
+                break;
+            case 2:
+                startSecondGame();
+                allGameForSecondGame();
+                printGame();
+                break;
+            default:
+                System.out.println("Вы выбрали не существующие данные, попробуйте ещё раз");
+                chooseGame();
+        }
     }
 }
