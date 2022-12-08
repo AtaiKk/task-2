@@ -8,7 +8,28 @@ public class Game {
     static int draw = 0;
     static int numberOfGames = 0;
 
-    public static void startGame(){
+    public static void startFirstGame() {
+        Move userMove = User.getMove();
+        Move computerMove = Computer.getMove();
+        System.out.println("\nВаш ход  " + userMove + ".");
+        System.out.println("Ход компьютера  " + computerMove + ".\n");
+
+        if ((userMove.equals(Move.ROCK) && computerMove.equals(Move.PAPER)) || (userMove.equals(Move.PAPER) && computerMove.equals(Move.SCISSORS)) ||
+                (userMove.equals(Move.SCISSORS) && computerMove.equals(Move.ROCK))) {
+            System.out.println("Компьютер победил");
+            computerScore++;
+        } else if ((userMove.equals(Move.PAPER) && computerMove.equals(Move.ROCK)) || (userMove.equals(Move.SCISSORS) && computerMove.equals(Move.PAPER)) ||
+                (userMove.equals(Move.ROCK) && computerMove.equals(Move.SCISSORS))) {
+            System.out.println("Вы победили");
+            userScore++;
+        } else {
+            draw++;
+            System.out.println("Ничья");
+        }
+        numberOfGames++;
+    }
+
+        public static void startSecondGame(){
         Move userMove = User.getMove();
         Move computerMove = Computer.getMove();
         System.out.println("\nВаш ход  " + userMove + ".");
@@ -44,7 +65,7 @@ public class Game {
         }
         numberOfGames++;
     }
-    public static void allGame() {
+    public static void allGameForFirstGame() {
         Scanner s = new Scanner(System.in);
         System.out.println("Хотите ли вы сыграть ещё раз?(Y/N)");
         String answer = null;
@@ -52,18 +73,41 @@ public class Game {
             answer = s.nextLine();
         } catch (ArithmeticException e) {
             System.out.println("Вы ввели не коректные данные,попробуйте ещё раз");
-            allGame();
+            allGameForFirstGame();
         }
         String correctAnswer = answer.toUpperCase();
         switch (correctAnswer) {
             case "Y":
-                startGame();
-                allGame();
+                startFirstGame();
+                allGameForFirstGame();
             case "N":
                 break;
             default:
                 System.out.println("Вы ввели не коректные данные,попробуйте ещё раз");
-                allGame();
+                allGameForFirstGame();
+        }
+    }
+
+    public static void allGameForSecondGame() {
+        Scanner s = new Scanner(System.in);
+        System.out.println("Хотите ли вы сыграть ещё раз?(Y/N)");
+        String answer = null;
+        try {
+            answer = s.nextLine();
+        } catch (ArithmeticException e) {
+            System.out.println("Вы ввели не коректные данные,попробуйте ещё раз");
+            allGameForSecondGame();
+        }
+        String correctAnswer = answer.toUpperCase();
+        switch (correctAnswer) {
+            case "Y":
+                startSecondGame();
+                allGameForSecondGame();
+            case "N":
+                break;
+            default:
+                System.out.println("Вы ввели не коректные данные,попробуйте ещё раз");
+                allGameForSecondGame();
         }
     }
 
